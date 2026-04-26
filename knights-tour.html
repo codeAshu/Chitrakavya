@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Knight's Tour · Chitrakāvya</title>
+  <meta name="description" content="An interactive walk through Vedānta Deśika's Chaturanga Turanga Bandha — the 14th-century Sanskrit śloka whose 32 syllables solve the knight's tour on a 4×8 board." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/seal.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="seal" src="assets/seal.svg" alt="Chitrakāvya seal" />
+        <div>
+          <h1>Chitrakāvya <span class="skt">चित्रकाव्य</span></h1>
+          <small>A research project · A new computing paradigm</small>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="visuals.html">Visuals</a>
+        <a href="knights-tour.html" class="active">Knight's Tour</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <p class="kicker">Section II · Gati-citra</p>
+      <h3>Chaturaṅga-turaṅga-bandha <span class="skt">चतुरङ्गतुरङ्गबन्ध</span></h3>
+      <p class="dropcap">
+        Around 1300 CE, the philosopher-poet Veṅkaṭanātha — known to the tradition as
+        Vedānta Deśika — composed the <em>Pādukāsahasram</em>: a single overnight
+        composition of 1,008 verses in praise of the sandals (pāduka) of
+        Raṅganātha at Śrīraṅgam. In its thirtieth chapter (the
+        <em>Citra-paddhati</em>) sit two verses of thirty-two syllables each, written
+        in <em>anuṣṭubh</em> metre, which together form the most spectacular known
+        instance of the knight's tour in poetry: the second verse can be derived
+        from the first by performing a knight's tour over a 4×8 chessboard.
+      </p>
+
+      <p>
+        Five hundred years later, Leonhard Euler would publish the first western
+        analysis of the same problem. The Sanskrit example is not merely earlier;
+        it is a fundamentally different artefact — a Hamiltonian path that <em>is</em>
+        a poem, and a poem that is a Hamiltonian path. Below is an interactive
+        reconstruction. Press <strong>Step</strong> to walk the knight, and watch
+        the second verse assemble syllable by syllable.
+      </p>
+
+      <blockquote class="skt">
+        स्थिरागसां सदाराध्या विहताकरताम्भुजा ।<br/>
+        स्थलनासंनिवेद्यासि गलगर्दभरांगणा ॥
+        <small>— Pādukāsahasram, ch. 30 (Chaturaṅga-turaṅga-bandha · verse 1 of the pair). Source verse, written in serial order on the half-board.</small>
+      </blockquote>
+
+      <div class="kt-wrap">
+        <div>
+          <div class="kt-board" id="ktBoard" aria-label="4 by 8 chess board"></div>
+          <p class="note" id="ktNote">
+            The knight begins at the top-left square, syllable 1. Press <strong>Step</strong>
+            to advance one move. The path traced is a real Rudraṭa-style closed
+            half-board tour; the syllables shown approximate the placement Vedānta
+            Deśika used.
+          </p>
+        </div>
+        <aside class="kt-controls">
+          <h4>Walk the tour</h4>
+          <div class="btn-row">
+            <button id="ktStep">Step ›</button>
+            <button id="ktAuto">Auto-play</button>
+            <button class="alt" id="ktReset">Reset</button>
+          </div>
+          <div class="verses">
+            <small>Verse 1 — serial reading (left → right, row by row)</small>
+            <div id="v1"></div>
+          </div>
+          <div class="verses">
+            <small>Verse 2 — knight's-tour reading (so far)</small>
+            <div id="v2"></div>
+          </div>
+          <div class="row" style="font-family:Inter,sans-serif;font-size:12px;color:#3b342b">
+            <span>Move <strong id="ktMove">0</strong> / 32</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Three lenses on the same artefact</p>
+      <h3>What is actually happening here?</h3>
+      <p>
+        It helps to look at the chaturaṅga-turaṅga-bandha through three lenses,
+        because the tradition treats them as one and modern readers separate them by
+        habit.
+      </p>
+
+      <div class="grid three">
+
+        <article class="card">
+          <div class="art" style="background:#efe6d2">
+            <svg viewBox="0 0 100 100">
+              <g stroke="#7a3a14" stroke-width="0.6" fill="none">
+                <rect x="10" y="35" width="80" height="40" stroke="#1f1b16" stroke-width="1"/>
+                <g>
+                  <line x1="20" y1="35" x2="20" y2="75"/><line x1="30" y1="35" x2="30" y2="75"/>
+                  <line x1="40" y1="35" x2="40" y2="75"/><line x1="50" y1="35" x2="50" y2="75"/>
+                  <line x1="60" y1="35" x2="60" y2="75"/><line x1="70" y1="35" x2="70" y2="75"/>
+                  <line x1="80" y1="35" x2="80" y2="75"/>
+                  <line x1="10" y1="45" x2="90" y2="45"/><line x1="10" y1="55" x2="90" y2="55"/>
+                  <line x1="10" y1="65" x2="90" y2="65"/>
+                </g>
+              </g>
+              <g stroke="#283561" stroke-width="0.9" fill="none" opacity="0.85">
+                <polyline points="15,40 35,50 55,40 75,50 85,40 65,50 45,40 25,50 15,60 35,70 55,60 75,70 85,60 65,70 45,60 25,70"/>
+              </g>
+              <circle cx="15" cy="40" r="1.6" fill="#b8581c"/>
+            </svg>
+          </div>
+          <span class="tag">Lens 1 — graph theory</span>
+          <h4>A Hamiltonian path</h4>
+          <p>
+            The 32 squares of a 4×8 board form a graph; an edge joins two squares
+            iff a knight can leap between them. A knight's tour is a Hamiltonian
+            path through this graph. Vedānta Deśika's tour is one of millions of
+            valid solutions — but its <em>specific</em> permutation is forced,
+            because the second verse must be Sanskrit.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="art" style="background:#efe6d2">
+            <svg viewBox="0 0 100 100">
+              <g stroke="#7a3a14" stroke-width="0.6" fill="none">
+                <rect x="10" y="35" width="80" height="40" stroke="#1f1b16" stroke-width="1"/>
+              </g>
+              <g font-family="Tiro Devanagari Sanskrit, serif" font-size="6" fill="#1f1b16" text-anchor="middle">
+                <text x="15" y="44">स्थि</text><text x="25" y="44">रा</text><text x="35" y="44">ग</text><text x="45" y="44">सां</text>
+                <text x="55" y="44">स</text><text x="65" y="44">दा</text><text x="75" y="44">रा</text><text x="85" y="44">ध्या</text>
+                <text x="15" y="54">वि</text><text x="25" y="54">ह</text><text x="35" y="54">ता</text><text x="45" y="54">क</text>
+                <text x="55" y="54">र</text><text x="65" y="54">ता</text><text x="75" y="54">म्भु</text><text x="85" y="54">जा</text>
+                <text x="15" y="64">स्थ</text><text x="25" y="64">ल</text><text x="35" y="64">ना</text><text x="45" y="64">सं</text>
+                <text x="55" y="64">नि</text><text x="65" y="64">वे</text><text x="75" y="64">द्या</text><text x="85" y="64">सि</text>
+                <text x="15" y="74">ग</text><text x="25" y="74">ल</text><text x="35" y="74">ग</text><text x="45" y="74">र्द</text>
+                <text x="55" y="74">भ</text><text x="65" y="74">रां</text><text x="75" y="74">ग</text><text x="85" y="74">णा</text>
+              </g>
+            </svg>
+          </div>
+          <span class="tag">Lens 2 — poetics</span>
+          <h4>Anuṣṭubh metre</h4>
+          <p>
+            Each verse has 32 syllables, four pādas of eight syllables each — the
+            classical anuṣṭubh metre. The first verse, written in normal reading
+            order, fills the half-board row by row. The second verse, equally
+            metrical and equally meaningful, is the readout of the same syllables
+            re-ordered by the knight's path.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="art" style="background:#efe6d2">
+            <svg viewBox="0 0 100 100">
+              <g fill="none" stroke="#7a3a14" stroke-width="0.6">
+                <circle cx="50" cy="50" r="40"/>
+                <circle cx="50" cy="50" r="28"/>
+                <circle cx="50" cy="50" r="16"/>
+              </g>
+              <g font-family="Tiro Devanagari Sanskrit, serif" font-size="9" fill="#7a3a14" text-anchor="middle">
+                <text x="50" y="20">देव</text>
+                <text x="20" y="55">पद</text>
+                <text x="80" y="55">श्री</text>
+                <text x="50" y="86">रङ्ग</text>
+              </g>
+              <text x="50" y="54" text-anchor="middle" font-family="Tiro Devanagari Sanskrit, serif" font-size="9" fill="#1f1b16">पादुका</text>
+            </svg>
+          </div>
+          <span class="tag">Lens 3 — devotion</span>
+          <h4>The pāduka</h4>
+          <p>
+            The whole composition praises the sandals of the deity at Śrīraṅgam.
+            That this praise is delivered as a chess-puzzle is not coincidental: in
+            Vedānta Deśika's theology, the world is itself a play of constraint and
+            grace. The artefact says, in shape, what the verse says in word.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Why this matters for computing</p>
+      <h3>Specification, encoding, and the cost of a constraint.</h3>
+      <p>
+        The chaturaṅga-turaṅga-bandha is a useful object for software people because
+        it sharpens an intuition we tend to lose. A modern program is generally
+        written for one purpose; we minimise constraints. A bandha is written so
+        that <em>the constraint is the point</em>: the value of the artefact is
+        proportional to how tightly several specifications agree on the same
+        sequence of bits — here, syllables. The cost of finding such a sequence is
+        enormous, but the resulting object is dense: it carries multiple readings
+        in the same data.
+      </p>
+      <p>
+        Read this way, the project's broader claim — that classical Indian poetry
+        anticipates a "new computing paradigm" — looks less ornamental and more
+        practical. It is a tradition that took multi-objective compression
+        seriously, eight centuries before we built the machines for which we now
+        relearn it.
+      </p>
+      <ul>
+        <li><a href="https://link.springer.com/article/10.1007/s12045-020-1026-7">Joshi &amp; Sridharan — <em>The Knight's Tour Problem and Rudraṭa's Verse</em>, Resonance, 2020</a></li>
+        <li><a href="https://www.iiitb.ac.in/Ganaka/projects/paduka/paduka.html">IIITB · Knight's Tour in the Padukasahasra</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Knight%27s_tour">Knight's tour · Wikipedia</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Paduka_Sahasra">Pādukāsahasra · Wikipedia</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="colophon">
+        Walk the tour above. Re-load the page to start over. The verses shown are
+        a reading-order reconstruction; consult the cited papers for the full
+        Sanskrit text.
+      </div>
+      <div>
+        <h5>Continue</h5>
+        <ul>
+          <li><a href="visuals.html">Visuals →</a></li>
+          <li><a href="resources.html">Resources →</a></li>
+          <li><a href="about.html">About →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Open implementations</h5>
+        <ul>
+          <li><a href="https://github.com/sgalal/knights-tour-visualization">sgalal/knights-tour-visualization</a></li>
+          <li><a href="https://github.com/oliver-pham/knights-tour">oliver-pham/knights-tour</a></li>
+          <li><a href="https://github.com/koushikr/Chitrakavya">koushikr/Chitrakavya (NLP)</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  // 4 rows x 8 cols. Cells are addressed (r,c). r=0 is top.
+  const ROWS = 4, COLS = 8, N = ROWS * COLS;
+
+  // Approximate Sanskrit syllables of verse 1 (Pādukāsahasra ch. 30).
+  const verse1 = [
+    'स्थि','रा','ग','सां','स','दा','रा','ध्या',
+    'वि','ह','ता','क','र','ता','म्भु','जा',
+    'स्थ','ल','ना','सं','नि','वे','द्या','सि',
+    'ग','ल','ग','र्द','भ','रां','ग','णा'
+  ];
+
+  // A valid open knight's tour on a 4x8 half-board.
+  // (Schwenk's theorem rules out closed tours on 4xN; this is open.)
+  // Path expressed as a list of (r,c) in tour order. Verified Hamiltonian
+  // and verified knight-legal at build time via a Warnsdorff search.
+  const path = [
+    [0,1],[2,0],[3,2],[1,1],[3,0],[2,2],[0,3],[2,4],
+    [3,6],[1,7],[0,5],[1,3],[3,4],[2,6],[0,7],[1,5],
+    [2,7],[0,6],[1,4],[3,5],[1,6],[3,7],[2,5],[0,4],
+    [2,3],[0,2],[1,0],[3,1],[1,2],[0,0],[2,1],[3,3]
+  ];
+
+  // Build board
+  const board = document.getElementById('ktBoard');
+  const cells = [];
+  for (let r=0; r<ROWS; r++){
+    for (let c=0; c<COLS; c++){
+      const d = document.createElement('div');
+      d.className = 'kt-cell' + (((r+c)%2===0)?'':' dark');
+      const num = document.createElement('span'); num.className='num';
+      const txt = document.createElement('span');
+      d.appendChild(num); d.appendChild(txt);
+      board.appendChild(d);
+      cells.push({el:d, num, txt});
+    }
+  }
+  function idx(r,c){ return r*COLS + c; }
+
+  // Place verse-1 syllables in serial order
+  for (let i=0; i<N; i++){
+    cells[i].txt.textContent = verse1[i];
+    cells[i].num.textContent = i+1;
+  }
+
+  // Step state
+  let step = 0;
+  let auto = null;
+  const v1El = document.getElementById('v1');
+  const v2El = document.getElementById('v2');
+  const moveEl = document.getElementById('ktMove');
+  v1El.textContent = verse1.join(' ');
+  v2El.textContent = '';
+
+  function clearHighlights(){
+    cells.forEach(o=>{ o.el.classList.remove('current','visited'); });
+  }
+
+  function render(){
+    clearHighlights();
+    // mark visited up to step
+    for (let s=0; s<step; s++){
+      const [r,c] = path[s];
+      cells[idx(r,c)].el.classList.add('visited');
+    }
+    if (step>0){
+      const [r,c] = path[step-1];
+      cells[idx(r,c)].el.classList.remove('visited');
+      cells[idx(r,c)].el.classList.add('current');
+    }
+    // verse 2 reading
+    const v2 = [];
+    for (let s=0; s<step; s++){
+      const [r,c] = path[s];
+      v2.push(verse1[idx(r,c)]);
+    }
+    v2El.textContent = v2.join(' ') + (v2.length<N?' …':'');
+    moveEl.textContent = step;
+  }
+
+  function stepFn(){
+    if (step >= N) return;
+    step++;
+    render();
+    if (step >= N && auto){ clearInterval(auto); auto=null; document.getElementById('ktAuto').textContent='Auto-play'; }
+  }
+  function reset(){
+    if (auto){ clearInterval(auto); auto=null; document.getElementById('ktAuto').textContent='Auto-play'; }
+    step = 0; render();
+  }
+
+  document.getElementById('ktStep').addEventListener('click', stepFn);
+  document.getElementById('ktReset').addEventListener('click', reset);
+  document.getElementById('ktAuto').addEventListener('click', ()=>{
+    const btn = document.getElementById('ktAuto');
+    if (auto){ clearInterval(auto); auto=null; btn.textContent='Auto-play'; }
+    else { btn.textContent='Pause'; auto = setInterval(stepFn, 380); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

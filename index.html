@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chitrakāvya — A New Computing Paradigm</title>
+  <meta name="description" content="Chitrakāvya: a research project at the seam of Sanskrit poetics and combinatorial mathematics — visual verse, knight's tours, palindromic shlokas, and a new way of reading computation in Indian classics." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/seal.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="seal" src="assets/seal.svg" alt="Chitrakāvya seal" />
+        <div>
+          <h1>Chitrakāvya <span class="skt">चित्रकाव्य</span></h1>
+          <small>A research project · A new computing paradigm</small>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="visuals.html">Visuals</a>
+        <a href="knights-tour.html">Knight's Tour</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h2>Verse that thinks in <em>shapes.</em><br/>Algorithms that sing in <em>śloka.</em></h2>
+        <p class="lede">
+          A thousand years before Euler, Sanskrit poets were already encoding
+          knight's tours, magic squares, and palindromic surfaces into living poems.
+          Chitrakāvya rebuilds these objects as computational artefacts —
+          and asks what they teach us about an alternative history of computing.
+        </p>
+        <p class="meta">Combinatorics · Poetics · Information design · Indic classics</p>
+      </div>
+      <img class="hero-art" src="assets/hero.svg" alt="A knight's tour over a 4×8 board, the form Vedānta Deśika and Rudraṭa used to bind two verses." />
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <section>
+      <p class="kicker">The thesis</p>
+      <h3>Reading classical Indian poetry as a computational object.</h3>
+      <p class="dropcap">
+        Chitrakāvya — literally <em>picture-poem</em> — is a tradition of Sanskrit verse
+        that survives only when read in two media at once: as sound, and as <em>shape</em>.
+        The poet writes a śloka whose syllables, when laid out on a grid, form a wheel,
+        a lotus, a drum, a sword, or a chessboard, and whose <em>readings</em> trace
+        paths through that figure: along petals, around spokes, in palindromic
+        symmetry, or along the L-jumps of a knight. The constraints are severe and
+        the meanings are precise. The same artefact is a poem, a diagram, and an
+        algorithm — three faces of one composition.
+      </p>
+      <p>
+        This project — originally hosted by the Computational Sciences Laboratory at
+        IIIT-Bangalore — collects these objects, restores their broken visualisations,
+        and treats them as exhibits in a longer history of <em>computation as form</em>.
+        The site you are reading is a fresh build of that archive, with new
+        illustrations, working interactive demos, and references repaired against
+        Wikipedia, peer-reviewed journals, and open-source code.
+      </p>
+
+      <blockquote class="skt">
+        स्थितः समः सरः मर्मा रामा रासः समः सर: ।<br/>
+        सरः समः सरामारा मार्मरः समः स्थितः ॥
+        <small>— Sarvatobhadra: each line a palindrome; the whole stanza a fixed point under reflection.</small>
+      </blockquote>
+    </section>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="kicker">Enter the project</p>
+      <h3>Four doors into the work.</h3>
+    </section>
+
+    <div class="entry-grid" role="navigation" aria-label="Project entries">
+      <a href="visuals.html">
+        <div class="num">I.</div>
+        <span class="ttl">Visuals</span>
+        <span class="sub">Bandhas: wheel, lotus, drum, sword, snake, omnidirectional grid.</span>
+      </a>
+      <a href="knights-tour.html">
+        <div class="num">II.</div>
+        <span class="ttl">Knight's Tour</span>
+        <span class="sub">Step through Vedānta Deśika's 32-syllable shloka, square by square.</span>
+      </a>
+      <a href="resources.html">
+        <div class="num">III.</div>
+        <span class="ttl">Resources</span>
+        <span class="sub">Papers, books, GitHub repositories, and primary texts — all link-checked.</span>
+      </a>
+      <a href="about.html">
+        <div class="num">IV.</div>
+        <span class="ttl">About</span>
+        <span class="sub">The argument, the lineage, the reading list.</span>
+      </a>
+    </div>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="kicker">A short orientation</p>
+      <h3>Three families of artefact.</h3>
+
+      <div class="grid three" style="margin-top:20px">
+
+        <article class="card">
+          <div class="art">
+            <!-- chakra bandha -->
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="44" fill="none" stroke="#7a3a14" stroke-width="0.8"/>
+              <circle cx="50" cy="50" r="32" fill="none" stroke="#7a3a14" stroke-width="0.6"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="#7a3a14" stroke-width="0.5"/>
+              <g stroke="#7a3a14" stroke-width="0.6">
+                <line x1="50" y1="6" x2="50" y2="94"/>
+                <line x1="6" y1="50" x2="94" y2="50"/>
+                <line x1="19" y1="19" x2="81" y2="81"/>
+                <line x1="81" y1="19" x2="19" y2="81"/>
+              </g>
+              <g font-family="Tiro Devanagari Sanskrit, serif" font-size="6" fill="#1f1b16" text-anchor="middle">
+                <text x="50" y="9">रा</text><text x="50" y="97">मा</text>
+                <text x="6" y="52">सः</text><text x="95" y="52">रा</text>
+                <text x="22" y="22">क</text><text x="82" y="22">वि</text>
+                <text x="22" y="84">च</text><text x="82" y="84">र</text>
+              </g>
+              <circle cx="50" cy="50" r="5" fill="#7a3a14"/>
+            </svg>
+          </div>
+          <span class="tag">Aakāra-citra · shape-poems</span>
+          <h4>Bandha <span class="skt">बन्ध</span></h4>
+          <p>Verses whose syllables, plotted on a grid, draw a recognisable figure. The reading rule lives in the figure: travel the spokes of a wheel, the petals of a lotus, the parallel runs of a drum.</p>
+          <div class="links"><a href="visuals.html">Open the gallery</a></div>
+        </article>
+
+        <article class="card">
+          <div class="art">
+            <!-- knight on half board -->
+            <svg viewBox="0 0 100 100">
+              <g>
+                <rect x="6" y="30" width="88" height="44" fill="#efe6d2" stroke="#1f1b16" stroke-width="1.2"/>
+                <g fill="#e3d2a8">
+                  <rect x="17" y="30" width="11" height="11"/><rect x="39" y="30" width="11" height="11"/><rect x="61" y="30" width="11" height="11"/><rect x="83" y="30" width="11" height="11"/>
+                  <rect x="6" y="41" width="11" height="11"/><rect x="28" y="41" width="11" height="11"/><rect x="50" y="41" width="11" height="11"/><rect x="72" y="41" width="11" height="11"/>
+                  <rect x="17" y="52" width="11" height="11"/><rect x="39" y="52" width="11" height="11"/><rect x="61" y="52" width="11" height="11"/><rect x="83" y="52" width="11" height="11"/>
+                  <rect x="6" y="63" width="11" height="11"/><rect x="28" y="63" width="11" height="11"/><rect x="50" y="63" width="11" height="11"/><rect x="72" y="63" width="11" height="11"/>
+                </g>
+                <polyline points="11,35 33,46 55,35 77,46 88,35 66,46 44,35 22,46 11,57 33,68 55,57 77,68 88,57 66,68 44,57 22,68"
+                  fill="none" stroke="#283561" stroke-width="1.6" opacity="0.9"/>
+                <circle cx="11" cy="35" r="2" fill="#b8581c"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tag">Gati-citra · path-poems</span>
+          <h4>Knight's tour <span class="skt">तुरगपदबन्ध</span></h4>
+          <p>Two śloka written so that the second emerges from the first by a knight's tour over a 4×8 board. The artefact is a verse, a Hamiltonian path, and a riddle in one.</p>
+          <div class="links"><a href="knights-tour.html">Step through the tour</a></div>
+        </article>
+
+        <article class="card">
+          <div class="art">
+            <!-- sarvatobhadra grid -->
+            <svg viewBox="0 0 100 100">
+              <g stroke="#7a3a14" stroke-width="0.5" fill="none">
+                <rect x="10" y="10" width="80" height="80"/>
+                <line x1="20" y1="10" x2="20" y2="90"/><line x1="30" y1="10" x2="30" y2="90"/>
+                <line x1="40" y1="10" x2="40" y2="90"/><line x1="50" y1="10" x2="50" y2="90"/>
+                <line x1="60" y1="10" x2="60" y2="90"/><line x1="70" y1="10" x2="70" y2="90"/>
+                <line x1="80" y1="10" x2="80" y2="90"/>
+                <line x1="10" y1="20" x2="90" y2="20"/><line x1="10" y1="30" x2="90" y2="30"/>
+                <line x1="10" y1="40" x2="90" y2="40"/><line x1="10" y1="50" x2="90" y2="50"/>
+                <line x1="10" y1="60" x2="90" y2="60"/><line x1="10" y1="70" x2="90" y2="70"/>
+                <line x1="10" y1="80" x2="90" y2="80"/>
+              </g>
+              <g font-family="Tiro Devanagari Sanskrit, serif" font-size="6" fill="#1f1b16" text-anchor="middle">
+                <text x="15" y="17">स</text><text x="25" y="17">क</text><text x="35" y="17">र</text><text x="45" y="17">त</text>
+                <text x="55" y="17">त</text><text x="65" y="17">र</text><text x="75" y="17">क</text><text x="85" y="17">स</text>
+                <text x="15" y="87">स</text><text x="25" y="87">क</text><text x="35" y="87">र</text><text x="45" y="87">त</text>
+                <text x="55" y="87">त</text><text x="65" y="87">र</text><text x="75" y="87">क</text><text x="85" y="87">स</text>
+              </g>
+              <g stroke="#b8581c" stroke-width="1" fill="none" opacity="0.7">
+                <path d="M10,50 L 90,50"/><path d="M50,10 L 50,90"/>
+              </g>
+            </svg>
+          </div>
+          <span class="tag">Vinyāsa-citra · arrangement-poems</span>
+          <h4>Sarvatōbhadra <span class="skt">सर्वतोभद्र</span></h4>
+          <p>"Auspicious in every direction": a verse that reads identically forward, backward, top-to-bottom, and bottom-to-top. A four-fold palindrome across a square grid.</p>
+          <div class="links"><a href="visuals.html#sarvatobhadra">See the demonstration</a></div>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">The claim</p>
+      <h3>A new computing paradigm — older than its name.</h3>
+      <p>
+        We tend to read the history of computing as a march of mechanisms — abacus,
+        clockwork, valve, transistor, GPU. But computation is not only the manipulation
+        of state; it is the act of <em>specifying a structure precisely enough that
+        someone else can reproduce it.</em> By that older definition, a chitrakāvya
+        verse is a program: an exact recipe for a shape, a path, and a meaning,
+        encoded in a substrate (Sanskrit) chosen because its grammar permits the
+        recipe to compile.
+      </p>
+      <p>
+        This site treats the corpus as exactly that — runnable specifications.
+        Each artefact is presented with three things: the verse itself, a
+        reconstructed visualisation, and a pointer to the modern algorithmic problem
+        it encodes (Hamiltonian path, magic square, palindrome, lipogram, constrained
+        composition). The intention is research, not romance: where a primary
+        source is contested, we say so, and we link the strongest secondary
+        scholarship we can find.
+      </p>
+      <div class="note">
+        This rebuild restores the project archive originally published at
+        <code>iiitb.ac.in/csl/projects/Chitrakavya/</code>. Where original
+        external links no longer resolve, they have been replaced with the closest
+        peer-reviewed paper, Wikipedia article, or open-source repository — see
+        <a href="resources.html">Resources</a> for the link map.
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="colophon">
+        Chitrakāvya — a research archive on visual verse and ancient
+        combinatorics. Rebuilt as a static site, April 2026, in the spirit of the
+        original IIITB project.
+      </div>
+      <div>
+        <h5>Sections</h5>
+        <ul>
+          <li><a href="visuals.html">Visuals</a></li>
+          <li><a href="knights-tour.html">Knight's Tour</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>External</h5>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Chitra-kavya">Chitra-kāvya · Wikipedia</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Paduka_Sahasra">Paduka Sahasra · Wikipedia</a></li>
+          <li><a href="https://link.springer.com/article/10.1007/s12045-020-1026-7">Knight's Tour &amp; Rudraṭa · Resonance</a></li>
+          <li><a href="https://github.com/koushikr/Chitrakavya">koushikr/Chitrakavya · GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

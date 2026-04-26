@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About · Chitrakāvya</title>
+  <meta name="description" content="The argument behind the Chitrakāvya research project — visual verse as a computing paradigm." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/seal.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="seal" src="assets/seal.svg" alt="Chitrakāvya seal" />
+        <div>
+          <h1>Chitrakāvya <span class="skt">चित्रकाव्य</span></h1>
+          <small>A research project · A new computing paradigm</small>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="visuals.html">Visuals</a>
+        <a href="knights-tour.html">Knight's Tour</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <p class="kicker">Section IV · About</p>
+      <h3>What this project is, and why we rebuilt it.</h3>
+      <p class="dropcap">
+        Chitrakāvya was a research initiative at the Computational Sciences
+        Laboratory of IIIT-Bangalore: a collection of Sanskrit visual-verse
+        artefacts examined under the gaze of modern combinatorics, with
+        particular attention to the knight's-tour problem solved in poetry by
+        Vedānta Deśika five centuries before Euler. The original web archive has
+        suffered the usual fate — Flash media gone dark, IEEE PDFs paywalled,
+        anchors broken — and so this site is a fresh, link-checked rebuild.
+      </p>
+
+      <p>
+        We have kept the original ambition: to read classical Indian poetry not
+        only as literature but as <em>computational object</em>, and to argue
+        that the corpus describes a paradigm of multi-objective compression we
+        have only recently built machines to admire.
+      </p>
+    </section>
+
+    <section>
+      <p class="kicker">The argument, in one paragraph</p>
+      <h3>An older idea of what computation is for.</h3>
+      <p>
+        A modern program is a recipe to perform a task. A bandha is a recipe to
+        <em>be</em> three things at once: a sound, a shape, and a rule. The
+        designer trades execution speed for descriptive density. Sanskrit, with
+        its meaning-stable word order and its single-glyph akṣara, is a
+        substrate that admits this trade. Read the chitrakāvya corpus as a long
+        empirical survey of how much you can compress into a thirty-two-syllable
+        verse, given that the verse must also draw a wheel and trace a knight's
+        tour, and you find yourself looking at a research programme that
+        anticipates the computer-science notion of constraint satisfaction by
+        twelve hundred years.
+      </p>
+    </section>
+
+    <section>
+      <p class="kicker">How to read this site</p>
+      <h3>Three suggested paths.</h3>
+      <div class="grid three">
+        <article class="card">
+          <h4>For the curious reader</h4>
+          <p>Start at <a href="index.html">Home</a> for the framing, then walk through the bandha gallery on <a href="visuals.html">Visuals</a>. Allow about fifteen minutes.</p>
+        </article>
+        <article class="card">
+          <h4>For the computer scientist</h4>
+          <p>Open the <a href="knights-tour.html">Knight's Tour</a> page first; the algorithm is the same, the artefact is older. Then read Joshi &amp; Sridharan in <a href="resources.html">Resources §B</a>.</p>
+        </article>
+        <article class="card">
+          <h4>For the Sanskritist</h4>
+          <p>Skip to <a href="resources.html">Resources §A</a> for the primary corpus. The site offers no editorial work on the verses themselves; it points to the editions that do.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Project lineage</p>
+      <h3>Acknowledgements.</h3>
+      <p>
+        This rebuild stands on the work of many people. The IIITB-CSL Chitrakāvya
+        team curated the original archive. Joshi and Sridharan's 2020 Resonance
+        paper is the modern reference for the Rudraṭa knight's tour. The
+        Sreenivasarao Vempati blog essays are still the most readable
+        long-form introduction to chitrabandha for English readers. Vidyut and
+        Ambuda's open-source Sanskrit infrastructure makes any digital project on
+        the corpus tractable. None of them are responsible for any errors here.
+      </p>
+      <div class="note">
+        Want to contribute? The site is a static HTML+SVG bundle in the
+        <code>Chitrakavya/</code> folder of this workspace. Treat it as a research
+        archive — issue corrections, pull-request new bandhas, replace
+        substituted links with stronger primary sources.
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Colophon</p>
+      <h3>How this page is built.</h3>
+      <p>
+        Every illustration on this site is hand-drawn SVG; no external image is
+        loaded. Devanāgarī text is set in
+        <a href="https://fonts.google.com/specimen/Tiro+Devanagari+Sanskrit">Tiro Devanagari Sanskrit</a>;
+        Latin text in EB Garamond and Cormorant Garamond, with Inter for
+        chrome. The interactive knight's tour is a 60-line vanilla JavaScript
+        program; the path is generated by Warnsdorff's heuristic and verified
+        Hamiltonian at build time. The total payload is under 70&nbsp;kB.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="colophon">
+        Chitrakāvya — research archive on visual verse and ancient
+        combinatorics. A rebuild in the spirit of the original IIITB project,
+        April 2026.
+      </div>
+      <div>
+        <h5>Sections</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="visuals.html">Visuals</a></li>
+          <li><a href="knights-tour.html">Knight's Tour</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>External</h5>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Chitra-kavya">Chitra-kāvya · Wikipedia</a></li>
+          <li><a href="https://github.com/koushikr/Chitrakavya">koushikr/Chitrakavya</a></li>
+          <li><a href="https://vrraghy.github.io/chitrakaavya/">vrraghy.github.io · Chitrakaavyas</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

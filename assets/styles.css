@@ -1,0 +1,643 @@
+/* =========================================================
+   Chitrakāvya — Research Project (rebuilt landing site)
+   A new computing paradigm at the seam of Sanskrit poetics
+   and combinatorial mathematics.
+   Research-paper aesthetic, single shared stylesheet.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+
+:root {
+  --paper:        #f7f1e3;
+  --paper-2:      #efe6d2;
+  --ink:          #1f1b16;
+  --ink-soft:     #3b342b;
+  --rule:         #c9b48a;
+  --saffron:      #b8581c;
+  --saffron-dk:   #7a3a14;
+  --indigo:       #283561;
+  --moss:         #4f6b3a;
+  --gold:         #a07e2a;
+  --max:          1080px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* subtle paper texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(40,30,15,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(40,30,15,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 1px;
+  z-index: 0;
+}
+
+main, header, footer, nav { position: relative; z-index: 1; }
+
+/* ---------------- header ---------------- */
+.site-head {
+  border-bottom: 1px solid var(--rule);
+  background:
+    linear-gradient(180deg, rgba(255,253,247,0.6), rgba(247,241,227,0.0)),
+    var(--paper);
+}
+.site-head .wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 28px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand .seal { width: 64px; height: 64px; flex: none; }
+.brand h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+.brand .skt {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: var(--saffron-dk);
+  letter-spacing: 0.01em;
+}
+.brand small {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color .15s, border-color .15s;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: var(--saffron-dk);
+  border-bottom-color: var(--saffron);
+}
+
+/* ---------------- hero band ---------------- */
+.hero {
+  border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,88,28,0.10), transparent 60%),
+    var(--paper);
+  padding: 56px 0 64px;
+}
+.hero .wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  margin: 0 0 16px;
+}
+.hero h2 em {
+  font-style: italic;
+  color: var(--saffron-dk);
+}
+.hero p.lede {
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+  max-width: 56ch;
+}
+.hero .meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 28px 0 0;
+}
+.hero-art {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(40,30,15,0.08));
+}
+
+/* ---------------- general layout ---------------- */
+main.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 28px 80px;
+}
+section { margin-bottom: 72px; }
+section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 0.005em;
+  margin: 0 0 6px;
+}
+section h3 .skt {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--saffron-dk);
+  margin-left: 10px;
+}
+section .kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--saffron-dk);
+  margin: 0 0 6px;
+}
+section p { margin: 0 0 14px; }
+
+a {
+  color: var(--saffron-dk);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,88,28,0.35);
+  transition: border-color .15s;
+}
+a:hover { border-bottom-color: var(--saffron); }
+
+/* dropcap for first paragraph of an article */
+.dropcap::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 0.85;
+  float: left;
+  padding: 6px 10px 0 0;
+  color: var(--saffron-dk);
+}
+
+blockquote.skt {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 22px;
+  line-height: 1.7;
+  color: var(--ink);
+  border-left: 3px solid var(--saffron);
+  margin: 22px 0;
+  padding: 6px 18px;
+  background: rgba(255,253,247,0.5);
+}
+blockquote.skt small {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+/* ---------------- card grids ---------------- */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+.grid.three { grid-template-columns: repeat(3, 1fr); }
+.grid.two   { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 820px) {
+  .grid.three, .grid.two { grid-template-columns: 1fr; }
+  .hero .wrap { grid-template-columns: 1fr; }
+  .site-head .wrap { grid-template-columns: 1fr; }
+  .site-nav { flex-wrap: wrap; gap: 14px 18px; }
+}
+
+.card {
+  background: rgba(255,253,247,0.55);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+}
+.card .art {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 14px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.card .art svg { width: 100%; height: 100%; display: block; }
+.card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+.card h4 .skt {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--saffron-dk);
+  margin-left: 6px;
+}
+.card .tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.card p { font-size: 17px; line-height: 1.55; margin: 0 0 12px; color: var(--ink-soft); }
+.card .links {
+  margin-top: auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.card .links a { border: none; }
+.card .links a::before { content: "› "; color: var(--saffron); }
+
+/* ---------------- index hero links ---------------- */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 820px) { .entry-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .entry-grid { grid-template-columns: 1fr; } }
+.entry-grid a {
+  display: block;
+  padding: 20px 22px;
+  border-right: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: none;
+  transition: background .15s;
+}
+.entry-grid a:last-child { border-right: none; }
+.entry-grid a:hover { background: rgba(184,88,28,0.06); }
+.entry-grid .num {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--saffron-dk);
+}
+.entry-grid .ttl {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 4px 0 6px;
+}
+.entry-grid .sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+/* ---------------- small utilities ---------------- */
+hr.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 32px 0;
+}
+.note {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  background: rgba(255,253,247,0.7);
+  border-left: 3px solid var(--gold);
+  padding: 12px 16px;
+  margin: 16px 0;
+  line-height: 1.55;
+}
+
+/* ---------------- footer ---------------- */
+footer.site-foot {
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+}
+footer.site-foot .wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+@media (max-width: 820px) { footer.site-foot .wrap { grid-template-columns: 1fr; } }
+footer.site-foot h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+footer.site-foot ul { margin: 0; padding: 0; list-style: none; }
+footer.site-foot li { margin-bottom: 4px; }
+footer.site-foot a { color: var(--ink-soft); border: none; }
+footer.site-foot a:hover { color: var(--saffron-dk); }
+footer.site-foot .colophon {
+  font-style: italic;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ---------------- knight-tour interactive ---------------- */
+.kt-wrap {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 320px;
+  gap: 28px;
+  align-items: start;
+  margin-top: 16px;
+}
+@media (max-width: 820px) { .kt-wrap { grid-template-columns: 1fr; } }
+
+.kt-board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  aspect-ratio: 8 / 4;
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+  user-select: none;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+.kt-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  transition: background .25s;
+}
+.kt-cell.dark { background: rgba(184,88,28,0.10); }
+.kt-cell.visited { background: rgba(40,53,97,0.18); color: var(--indigo); }
+.kt-cell.current { background: var(--saffron); color: #fff8ec; }
+.kt-cell .num {
+  position: absolute;
+  top: 3px; left: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
+
+.kt-controls {
+  display: flex; flex-direction: column; gap: 14px;
+  font-family: 'Inter', sans-serif;
+}
+.kt-controls h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+}
+.kt-controls .btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.kt-controls button {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background .12s;
+}
+.kt-controls button.alt {
+  background: transparent;
+  color: var(--ink);
+}
+.kt-controls button:hover { background: var(--saffron-dk); border-color: var(--saffron-dk); color: var(--paper); }
+.kt-controls .verses {
+  border: 1px solid var(--rule);
+  padding: 14px;
+  background: rgba(255,253,247,0.7);
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.kt-controls .verses small {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+
+/* ---------------- sarvatobhadra grid ---------------- */
+.stb-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  max-width: 480px;
+  margin: 14px 0;
+  border: 2px solid var(--ink);
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+.stb-grid div {
+  aspect-ratio: 1;
+  display: grid; place-items: center;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 18px;
+  background: var(--paper-2);
+}
+.stb-grid div.hot { background: rgba(184,88,28,0.20); color: var(--saffron-dk); }
+
+/* ---------------- references / resources ---------------- */
+ol.refs, ul.refs {
+  padding-left: 22px;
+  margin: 8px 0 0;
+}
+ol.refs li, ul.refs li {
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+/* ---------------- knuth pair (English chitrakavya) ---------------- */
+.knuth-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 18px 0;
+}
+@media (max-width: 820px) { .knuth-pair { grid-template-columns: 1fr; } }
+.knuth-pair > div { min-width: 0; }
+.knuth-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--saffron-dk);
+  margin-bottom: 6px;
+}
+.knuth-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+  font-family: 'EB Garamond', serif;
+}
+.knuth-grid > div {
+  position: relative;
+  aspect-ratio: 1.6 / 1;
+  padding: 4px 2px;
+  display: grid; place-items: center;
+  font-size: 13px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+  line-height: 1.05;
+  word-break: break-word;
+  background: transparent;
+  transition: background .25s;
+}
+.knuth-grid > div .num {
+  position: absolute; top: 1px; left: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  color: var(--ink-soft);
+  opacity: 0.55;
+}
+.knuth-grid > div.dark { background: rgba(184,88,28,0.08); }
+.knuth-grid > div.visited { background: rgba(40,53,97,0.18); color: var(--indigo); }
+.knuth-grid > div.current { background: var(--saffron); color: #fff8ec; }
+.knuth-grid > div.match { background: rgba(79,107,58,0.22); color: var(--moss); font-weight: 600; }
+.knuth-grid > div.jumping {
+  animation: knightJump 220ms ease-out;
+  z-index: 2;
+}
+@keyframes knightJump {
+  0%   { transform: scale(1.00); box-shadow: 0 0 0 0 rgba(184,88,28,0.55); }
+  35%  { transform: scale(1.18); box-shadow: 0 0 0 10px rgba(184,88,28,0.00); }
+  100% { transform: scale(1.00); }
+}
+
+.knuth-controls {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  margin-top: 10px;
+}
+.knuth-controls button {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 7px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.knuth-controls button.alt {
+  background: transparent; color: var(--ink);
+}
+.knuth-controls button:hover {
+  background: var(--saffron-dk); border-color: var(--saffron-dk); color: var(--paper);
+}
+.knuth-controls .move {
+  font-size: 12px; color: var(--ink-soft); margin-left: 6px;
+}
+.knuth-controls audio { height: 32px; }
+
+.knuth-verse {
+  background: rgba(255,253,247,0.7);
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.knuth-verse small {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 4px;
+}
+
+/* tiny helpers */
+.row { display: flex; flex-wrap: wrap; gap: 14px; }
+.pill {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(40,53,97,0.10);
+  color: var(--indigo);
+  padding: 3px 9px;
+  border-radius: 2px;
+}
+.pill.saff { background: rgba(184,88,28,0.14); color: var(--saffron-dk); }
+.pill.moss { background: rgba(79,107,58,0.15); color: var(--moss); }
