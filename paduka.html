@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pādukāsahasra · Chitrakāvya</title>
+  <meta name="description" content="The Padukasahasra and Haravijaya knight's tour project — primary Sanskrit verses, the Rudrata–Ratnakara–Vedanta Desika lineage, and a scholarly walk-through of the chess-puzzle that is a hymn." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/seal.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="seal" src="assets/seal.svg" alt="Chitrakāvya seal" />
+        <div>
+          <h1>Chitrakāvya <span class="skt">चित्रकाव्य</span></h1>
+          <small>A research project · A new computing paradigm</small>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="visuals.html">Visuals</a>
+        <a href="paduka.html" class="active">Pādukā</a>
+        <a href="knights-tour.html">Knight's Tour</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="meta" style="margin: 0 0 14px">A scholarly companion · the chess-puzzle that is a hymn</p>
+        <h2><em>Pādukāsahasra,</em><br/>the knight's tour in 1300 CE.</h2>
+        <p class="lede">
+          A 1,008-verse devotional epic on the sandals of a deity at Śrīraṅgam.
+          Inside it, two verses — numbered 929 and 930 — solve the knight's tour
+          on a half-chessboard, half a millennium before Euler. This page assembles
+          the primary Sanskrit, the lineage that produced it, and the modern
+          mathematics that recognises what was being done.
+        </p>
+        <p class="meta">Vedānta Deśika · 14th c. · Anuṣṭubh metre · 32 + 32 syllables</p>
+      </div>
+      <div>
+        <!-- Padukasahasra ornamental SVG: paduka silhouette with chessboard pattern -->
+        <svg viewBox="0 0 360 320" role="img" aria-label="Paduka with knight's tour overlay" style="width:100%;height:auto;filter:drop-shadow(0 6px 14px rgba(40,30,15,0.10))">
+          <defs>
+            <radialGradient id="ph" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#f6e1bf"/>
+              <stop offset="100%" stop-color="#f7f1e3" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="pi" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7a3a14"/>
+              <stop offset="100%" stop-color="#283561"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="180" cy="150" rx="170" ry="120" fill="url(#ph)"/>
+          <!-- paduka outline: a stylised sandal silhouette -->
+          <g fill="none" stroke="#7a3a14" stroke-width="1.6">
+            <path d="M85 80
+                     C 85 50, 130 30, 175 40
+                     C 230 50, 270 80, 285 120
+                     C 295 160, 285 210, 250 240
+                     C 200 270, 130 270, 100 240
+                     C 70 210, 75 110, 85 80 Z"/>
+            <!-- toe knob (kuṇḍa) -->
+            <circle cx="200" cy="80" r="14"/>
+            <line x1="200" y1="94" x2="200" y2="106"/>
+          </g>
+          <!-- 4×8 chess board placed inside the paduka outline -->
+          <g transform="translate(105 130)">
+            <g>
+              <rect x="0" y="0" width="160" height="80" fill="#efe6d2" stroke="#1f1b16" stroke-width="1.2"/>
+              <g fill="#e3d2a8">
+                <rect x="20" y="0"  width="20" height="20"/><rect x="60" y="0"  width="20" height="20"/><rect x="100" y="0" width="20" height="20"/><rect x="140" y="0" width="20" height="20"/>
+                <rect x="0"  y="20" width="20" height="20"/><rect x="40" y="20" width="20" height="20"/><rect x="80"  y="20" width="20" height="20"/><rect x="120" y="20" width="20" height="20"/>
+                <rect x="20" y="40" width="20" height="20"/><rect x="60" y="40" width="20" height="20"/><rect x="100" y="40" width="20" height="20"/><rect x="140" y="40" width="20" height="20"/>
+                <rect x="0"  y="60" width="20" height="20"/><rect x="40" y="60" width="20" height="20"/><rect x="80"  y="60" width="20" height="20"/><rect x="120" y="60" width="20" height="20"/>
+              </g>
+              <!-- knight tour polyline (representative) -->
+              <polyline points="10,10 50,30 90,10 130,30 150,10 110,30 70,10 30,30 10,50 50,70 90,50 130,70 150,50 110,70 70,50 30,70"
+                fill="none" stroke="url(#pi)" stroke-width="1.6" opacity="0.85"/>
+              <circle cx="10" cy="10" r="3" fill="#b8581c"/>
+            </g>
+          </g>
+          <!-- caption -->
+          <g font-family="EB Garamond, serif" fill="#3b342b">
+            <text x="60" y="294" font-size="13" font-style="italic">"…rangaraja-padaṁ naya."</text>
+            <text x="60" y="310" font-size="11">Pādukāsahasra · ch. 30 · verse 929</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <section>
+      <p class="kicker">The artefact</p>
+      <h3>Two verses that share their bones.</h3>
+      <p class="dropcap">
+        In the thirtieth chapter of the <em>Pādukāsahasra</em> — a chapter Vedānta
+        Deśika titles the <em>Citra-paddhati</em>, "the path of figures" — sit two
+        verses that look, to a modern reader, like an impossibility. Both are
+        thirty-two syllables long, both are in classical anuṣṭubh metre, both
+        praise the sandals of Lord Raṅganātha at Śrīraṅgam, both make grammatical
+        and devotional sense. And the second is the same body of syllables as the
+        first, re-ordered by a knight's tour over a 4×8 half-chessboard.
+      </p>
+      <p>
+        The poetic figure that licenses this is called the
+        <em>chaturaṅga-turaṅga-pāda-bandha</em> — "binding by the foot-step of a
+        chess-knight." It is the most ambitious instance in classical Sanskrit
+        of the broader chitrakāvya impulse: encode a single object in three
+        media at once — sound, shape, and rule.
+      </p>
+    </section>
+
+    <section id="verse929">
+      <p class="kicker">Verse 929 · sequential reading</p>
+      <h3 style="margin-bottom: 4px">The seed.</h3>
+      <p style="margin-top: 0; color: var(--ink-soft); font-style: italic">Padukasahasra 30.40 · Vedānta Deśika · ca. 1300 CE</p>
+
+      <blockquote class="skt" style="font-size: 24px">
+        स्थिरागसां सदाराध्या विहताकरताम्भुजा ।<br/>
+        सत्पादुके सरसा मा रङ्गराजपदं नय ॥
+        <small>sthirāgasāṁ sadārādhyā · vihatākaratāmbhujā</small>
+        <small style="margin-top: -2px">satpāduke sarasā mā · raṅgarāja-padaṁ naya</small>
+      </blockquote>
+
+      <p>
+        <strong>A reading.</strong> "O virtuous sandal — adored ever by those of
+        steady offences, you who have crushed the lotus-faced sin-bearer; lead
+        me, full of feeling, to the foot of the king of Raṅga." The verse is a
+        prayer; it is also the seed for what comes next.
+      </p>
+
+      <p>
+        Below, the thirty-two akṣaras of verse 929 are placed in row-major order
+        on a 4×8 half-board.
+      </p>
+
+      <div class="kt-board" id="seedBoard" aria-label="Verse 929 — 32 syllables on a 4×8 board" style="aspect-ratio: 8 / 4; max-width: 720px"></div>
+    </section>
+
+    <section id="verse930">
+      <p class="kicker">Verse 930 · knight's-tour reading</p>
+      <h3 style="margin-bottom: 4px">The reading that the knight produces.</h3>
+      <p style="margin-top: 0; color: var(--ink-soft); font-style: italic">Padukasahasra 30.41 · same chapter, immediately following</p>
+
+      <blockquote class="skt" style="font-size: 24px">
+        स्थिता समयराजत्पागतरामादके गवि ।<br/>
+        दुरंहसां सन्नतादा साध्या तापकरासरा ॥
+        <small>sthitā samaya-rājat-pāgata-rāmādake gavi</small>
+        <small style="margin-top:-2px">duraṁhasāṁ sannatādā sādhyā tāpa-karāsarā</small>
+      </blockquote>
+
+      <p>
+        Verse 930 is composed of <em>exactly the same thirty-two syllables</em> as
+        verse 929, in a new order — the order in which a chess-knight visits the
+        squares of the half-board. Both verses are metrical, both are
+        grammatical, both make devotional sense.
+      </p>
+
+      <p>
+        On the page below, every cell carries two syllables: the syllable
+        verse 929 places there, and (in smaller type) the position that syllable
+        will occupy in verse 930 after the knight's tour. Cell <em>n</em>'s "tour
+        position" tells you when in the second verse you will hear that syllable.
+      </p>
+
+      <div class="kt-board" id="pairBoard" aria-label="Verse 929/930 mapping board" style="aspect-ratio: 8 / 4; max-width: 720px"></div>
+      <div class="row" style="gap:8px; margin-top: 12px">
+        <button id="pdkStep" class="kt-btn">Step ›</button>
+        <button id="pdkAuto" class="kt-btn">Auto-play</button>
+        <button id="pdkReset" class="kt-btn alt">Reset</button>
+        <a href="knights-tour.html" class="kt-btn alt" style="text-decoration:none;display:inline-flex;align-items:center;padding:7px 14px">→ Full interactive walk-through</a>
+      </div>
+      <div class="note">
+        Want the full interactive demo with audio recital and synced knight?
+        See <a href="knights-tour.html">Knight's Tour</a> for the live walk and
+        <a href="visuals.html">Visuals</a> for the modern English analogues by
+        Donald Knuth.
+      </div>
+    </section>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="kicker">Lineage</p>
+      <h3>Three knight's tours, three centuries.</h3>
+      <p>
+        Vedānta Deśika did not invent the device — he perfected it. The
+        chitrakāvya tradition records two earlier instances of a knight's
+        tour bound into a verse, both from the 9th century in Kashmir.
+        Looking at all three side by side is the cleanest way to see the
+        problem moving.
+      </p>
+
+      <div class="grid three" style="margin-top: 18px">
+
+        <article class="card">
+          <div class="art">
+            <svg viewBox="0 0 240 240">
+              <rect width="240" height="240" fill="#efe6d2"/>
+              <g transform="translate(20 80)">
+                <rect x="0" y="0" width="200" height="100" fill="none" stroke="#1f1b16" stroke-width="1.4"/>
+                <g fill="#e3d2a8" opacity="0.7">
+                  <rect x="25" y="0"  width="25" height="25"/><rect x="75" y="0"  width="25" height="25"/><rect x="125" y="0" width="25" height="25"/><rect x="175" y="0" width="25" height="25"/>
+                  <rect x="0"  y="25" width="25" height="25"/><rect x="50" y="25" width="25" height="25"/><rect x="100" y="25" width="25" height="25"/><rect x="150" y="25" width="25" height="25"/>
+                  <rect x="25" y="50" width="25" height="25"/><rect x="75" y="50" width="25" height="25"/><rect x="125" y="50" width="25" height="25"/><rect x="175" y="50" width="25" height="25"/>
+                  <rect x="0"  y="75" width="25" height="25"/><rect x="50" y="75" width="25" height="25"/><rect x="100" y="75" width="25" height="25"/><rect x="150" y="75" width="25" height="25"/>
+                </g>
+                <polyline points="12,12 62,37 112,12 162,37 187,12 137,37 87,12 37,37 12,62 62,87 112,62 162,87 187,62 137,87 87,62 37,87"
+                  stroke="#283561" stroke-width="1.5" fill="none" opacity="0.85"/>
+                <circle cx="12" cy="12" r="3" fill="#b8581c"/>
+              </g>
+              <text x="120" y="50" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" fill="#1f1b16">Rudraṭa</text>
+              <text x="120" y="220" text-anchor="middle" font-family="EB Garamond, serif" font-size="13" fill="#3b342b" font-style="italic">c. 850 CE · Kashmir</text>
+            </svg>
+          </div>
+          <span class="tag">Kāvyālaṅkāra · 5.15</span>
+          <h4>Rudraṭa <span class="skt">रुद्रट</span></h4>
+          <p>
+            The earliest known instance of a knight's tour in any literature.
+            Rudraṭa's <em>Kāvyālaṅkāra</em> presents the figure as a poetic
+            ornament — <em>turagapadabandha</em>, "the foot-step of a horse."
+            A pair of meaningful verses where the second is the knight's-tour
+            reading of the first.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="art">
+            <svg viewBox="0 0 240 240">
+              <rect width="240" height="240" fill="#efe6d2"/>
+              <g transform="translate(20 80)">
+                <rect x="0" y="0" width="200" height="100" fill="none" stroke="#1f1b16" stroke-width="1.4"/>
+                <g fill="#e3d2a8" opacity="0.7">
+                  <rect x="25" y="0"  width="25" height="25"/><rect x="75" y="0"  width="25" height="25"/><rect x="125" y="0" width="25" height="25"/><rect x="175" y="0" width="25" height="25"/>
+                  <rect x="0"  y="25" width="25" height="25"/><rect x="50" y="25" width="25" height="25"/><rect x="100" y="25" width="25" height="25"/><rect x="150" y="25" width="25" height="25"/>
+                  <rect x="25" y="50" width="25" height="25"/><rect x="75" y="50" width="25" height="25"/><rect x="125" y="50" width="25" height="25"/><rect x="175" y="50" width="25" height="25"/>
+                  <rect x="0"  y="75" width="25" height="25"/><rect x="50" y="75" width="25" height="25"/><rect x="100" y="75" width="25" height="25"/><rect x="150" y="75" width="25" height="25"/>
+                </g>
+                <!-- different tour shape -->
+                <polyline points="37,12 12,37 37,62 12,87 62,87 87,62 62,37 87,12 137,12 112,37 137,62 112,87 162,87 187,62 162,37 187,12"
+                  stroke="#4f6b3a" stroke-width="1.5" fill="none" opacity="0.85"/>
+                <circle cx="37" cy="12" r="3" fill="#b8581c"/>
+              </g>
+              <text x="120" y="50" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" fill="#1f1b16">Ratnākara</text>
+              <text x="120" y="220" text-anchor="middle" font-family="EB Garamond, serif" font-size="13" fill="#3b342b" font-style="italic">c. 850 CE · Kashmir</text>
+            </svg>
+          </div>
+          <span class="tag">Haravijaya · canto 6</span>
+          <h4>Ratnākara <span class="skt">रत्नाकर</span></h4>
+          <p>
+            The longest extant Sanskrit mahākāvya — 4,351 verses across fifty
+            cantos. The sixth canto, the <em>Bhagavatstutivarṇana</em>, contains
+            an elaborated knight's tour fitted into a hymn to Śiva, contemporary
+            with Rudraṭa but more devotionally extended.
+          </p>
+        </article>
+
+        <article class="card" style="border-color: var(--saffron); background: rgba(255,253,247,0.85)">
+          <div class="art" style="background: rgba(184,88,28,0.06); border-color: var(--saffron)">
+            <svg viewBox="0 0 240 240">
+              <rect width="240" height="240" fill="#efe6d2"/>
+              <g transform="translate(20 80)">
+                <rect x="0" y="0" width="200" height="100" fill="none" stroke="#1f1b16" stroke-width="1.4"/>
+                <g fill="#e3d2a8" opacity="0.85">
+                  <rect x="25" y="0"  width="25" height="25"/><rect x="75" y="0"  width="25" height="25"/><rect x="125" y="0" width="25" height="25"/><rect x="175" y="0" width="25" height="25"/>
+                  <rect x="0"  y="25" width="25" height="25"/><rect x="50" y="25" width="25" height="25"/><rect x="100" y="25" width="25" height="25"/><rect x="150" y="25" width="25" height="25"/>
+                  <rect x="25" y="50" width="25" height="25"/><rect x="75" y="50" width="25" height="25"/><rect x="125" y="50" width="25" height="25"/><rect x="175" y="50" width="25" height="25"/>
+                  <rect x="0"  y="75" width="25" height="25"/><rect x="50" y="75" width="25" height="25"/><rect x="100" y="75" width="25" height="25"/><rect x="150" y="75" width="25" height="25"/>
+                </g>
+                <polyline points="12,12 62,12 87,37 37,37 12,62 62,62 87,87 37,87 87,12 137,12 162,37 112,37 87,62 137,62 162,87 112,87"
+                  stroke="#7a3a14" stroke-width="1.6" fill="none"/>
+                <circle cx="12" cy="12" r="3.5" fill="#b8581c"/>
+              </g>
+              <text x="120" y="50" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#7a3a14">Vedānta Deśika</text>
+              <text x="120" y="220" text-anchor="middle" font-family="EB Garamond, serif" font-size="13" fill="#3b342b" font-style="italic">c. 1300 CE · Śrīraṅgam</text>
+            </svg>
+          </div>
+          <span class="tag" style="color: var(--saffron-dk)">Padukasahasra · 30.40–41</span>
+          <h4>Vedānta Deśika <span class="skt">वेदान्तदेशिक</span></h4>
+          <p>
+            The synthesis. A devotional epic of 1,008 verses in praise of a
+            deity's sandals; chapter 30 deploys forty bandhas; verses 929 and
+            930 deliver the knight's tour at its tightest and most expressive.
+            Tradition says the entire epic was composed overnight.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">A comparative table</p>
+      <h3>What the three artefacts share, and what they don't.</h3>
+      <div style="overflow-x:auto; margin-top: 14px">
+        <table style="width:100%; border-collapse: collapse; font-family: 'EB Garamond', serif; font-size: 17px">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--ink); text-align: left">
+              <th style="padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing:0.18em; text-transform: uppercase; color: var(--ink-soft)">Author / work</th>
+              <th style="padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing:0.18em; text-transform: uppercase; color: var(--ink-soft)">Date</th>
+              <th style="padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing:0.18em; text-transform: uppercase; color: var(--ink-soft)">Board</th>
+              <th style="padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing:0.18em; text-transform: uppercase; color: var(--ink-soft)">Syllables</th>
+              <th style="padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing:0.18em; text-transform: uppercase; color: var(--ink-soft)">Subject</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--rule)">
+              <td style="padding: 12px"><strong>Rudraṭa</strong> — <em>Kāvyālaṅkāra</em> 5.15</td>
+              <td style="padding: 12px">c. 850 CE</td>
+              <td style="padding: 12px">4 × 8 (half-board)</td>
+              <td style="padding: 12px">32 + 32</td>
+              <td style="padding: 12px">Poetic ornament</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--rule)">
+              <td style="padding: 12px"><strong>Ratnākara</strong> — <em>Haravijaya</em> ch. 6</td>
+              <td style="padding: 12px">c. 850 CE</td>
+              <td style="padding: 12px">4 × 8 (half-board)</td>
+              <td style="padding: 12px">32 + 32</td>
+              <td style="padding: 12px">Hymn to Śiva</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--rule); background: rgba(184,88,28,0.06)">
+              <td style="padding: 12px"><strong>Vedānta Deśika</strong> — <em>Pādukāsahasra</em> 30.40–41</td>
+              <td style="padding: 12px">c. 1300 CE</td>
+              <td style="padding: 12px">4 × 8 (half-board)</td>
+              <td style="padding: 12px">32 + 32</td>
+              <td style="padding: 12px">Praise of Raṅganātha's sandals</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px"><strong>Leonhard Euler</strong> — <em>Solution d'une question curieuse</em></td>
+              <td style="padding: 12px">1759 CE</td>
+              <td style="padding: 12px">8 × 8 (full board)</td>
+              <td style="padding: 12px">—</td>
+              <td style="padding: 12px">First Western analysis</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 14px">
+        The Sanskrit instances precede Euler by nine hundred years. They work
+        on a half-board because that is the form the metre demands — anuṣṭubh
+        gives 32 syllables, four pādas of eight, and 4 × 8 = 32.
+      </p>
+    </section>
+
+    <section>
+      <p class="kicker">Why this matters as computer science</p>
+      <h3>The constraint, not the answer, is the artefact.</h3>
+      <p>
+        It is tempting, but wrong, to reduce the Padukasahasra to "an early
+        knight's tour." The knight's tour is the easy part. There are millions
+        of valid Hamiltonian paths on a 4×8 board, and any one of them
+        permutes 32 syllables. The hard part, and the part that no Western
+        treatment captures until very recently, is that the permutation must
+        leave behind a <em>second meaningful verse</em> in metre. This is a
+        joint constraint over three independent specifications:
+      </p>
+      <ol style="line-height: 1.65; margin: 8px 0; padding-left: 22px">
+        <li>the syllables form a Hamiltonian path on the 4×8 knight graph;</li>
+        <li>the syllables, read in the path's order, scan as anuṣṭubh;</li>
+        <li>the resulting Sanskrit is grammatical, devotional, and beautiful.</li>
+      </ol>
+      <p>
+        For a modern audience this is recognisable as a constraint-satisfaction
+        problem with a fitness function. The Sanskrit poets did not have the
+        vocabulary, but they had the practice — and they had it nine centuries
+        before the vocabulary arrived. The Padukasahasra is a working solution
+        to a problem we would now phrase as: <em>find a permutation π of a
+        32-element string s such that π(s) is also a sentence in a given
+        natural language and a given metre, and π itself is a Hamiltonian path
+        on the knight graph K(4,8).</em>
+      </p>
+    </section>
+
+    <section>
+      <p class="kicker">Read further</p>
+      <h3>Primary editions and modern scholarship.</h3>
+      <ul class="refs">
+        <li><a href="https://en.wikipedia.org/wiki/Paduka_Sahasra">Pādukāsahasra · Wikipedia</a></li>
+        <li><a href="https://www.prapatti.com/categories/paadukaasahasram.php">prapatti.com — full Sanskrit text with commentary</a></li>
+        <li><a href="https://archive.org/details/in.ernet.dli.2015.495568">Internet Archive — Raṅganātha-pādukā-sahasram &amp; Deśika-sahasram (public-domain edition)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Haravijaya">Haravijaya · Wikipedia</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Rudrata">Rudraṭa · Wikipedia</a></li>
+        <li><a href="https://link.springer.com/article/10.1007/s12045-020-1026-7">Joshi &amp; Sridharan — <em>The Knight's Tour Problem and Rudraṭa's Verse</em>, Resonance, 2020</a></li>
+        <li><a href="https://www.iiitb.ac.in/Ganaka/projects/paduka/paduka.html">IIITB · Knight's Tour in the Padukāsahasra, Haravijaya, etc.</a> — original project page</li>
+        <li><a href="https://sridharshanam.org/wp-content/uploads/2019/01/Dextreous-Desika_1.pdf">The Dexterous Deśika</a> — accessible essay (PDF)</li>
+        <li><a href="https://academia.edu/8786970/Sound_image_and_meaning._Many_aspects_of_Sanskrit_figurative_poetry">Pollastri — <em>Sound, Image and Meaning</em> (PDF)</a></li>
+      </ul>
+      <p style="margin-top: 18px">
+        For the interactive walk over verse 929, see
+        <a href="knights-tour.html">Knight's Tour</a>; for the modern English
+        chitrakāvya by Donald Knuth that puts the same form into English, see
+        <a href="visuals.html">Visuals</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="colophon">
+        Pādukāsahasra — a 1,008-verse devotional epic with a chess puzzle in
+        chapter 30. Page rebuilt from the IIITB-CSL Padukasahasra project
+        archive, with primary verses re-set in Tiro Devanagari Sanskrit.
+      </div>
+      <div>
+        <h5>Related</h5>
+        <ul>
+          <li><a href="knights-tour.html">Knight's Tour →</a></li>
+          <li><a href="visuals.html">Visuals →</a></li>
+          <li><a href="resources.html">Resources →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Primary</h5>
+        <ul>
+          <li><a href="https://en.wikipedia.org/wiki/Paduka_Sahasra">Pādukāsahasra · Wikipedia</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Haravijaya">Haravijaya · Wikipedia</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Rudrata">Rudraṭa · Wikipedia</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  /* ------------------------------------------------------------------
+     Verse 929 → 930 board demo.
+     verse929: 32 akṣaras of the seed verse, in row-major sequential order.
+     verse930: 32 akṣaras of the knight-tour-derived verse, in tour order.
+     A valid 4×8 Hamiltonian knight's tour starting at (0,0) walks the
+     seed board and reveals where each syllable lands in verse 930.
+  ------------------------------------------------------------------ */
+  const ROWS = 4, COLS = 8, N = 32;
+  const TOUR = [
+    [0,0],[2,1],[0,2],[1,0],[3,1],[1,2],[3,3],[1,4],
+    [0,6],[2,7],[3,5],[1,6],[3,7],[2,5],[0,4],[2,3],
+    [1,1],[3,0],[2,2],[0,1],[2,0],[3,2],[1,3],[3,4],
+    [2,6],[0,7],[1,5],[0,3],[2,4],[0,5],[1,7],[3,6]
+  ];
+  const verse929 = [
+    'स्थि','रा','ग','सां','स','दा','रा','ध्या',
+    'वि','ह','ता','क','र','ता','म्भु','जा',
+    'सत्','पा','दु','के','स','र','सा','मा',
+    'रङ्','ग','रा','ज','प','दं','न','य'
+  ];
+  const verse930 = [
+    'स्थि','ता','स','म','य','रा','ज','त्',
+    'पा','ग','त','रा','मा','द','के','ग',
+    'वि','दु','रं','ह','सां','स','न्न','ता',
+    'दा','सा','ध्या','ता','प','क','रा','स'
+  ];
+
+  function buildBoard(elId, words, showOnly){
+    const el = document.getElementById(elId);
+    if (!el) return [];
+    el.innerHTML = '';
+    const cells = [];
+    for (let r=0; r<ROWS; r++){
+      for (let c=0; c<COLS; c++){
+        const idx = r*COLS + c;
+        const d = document.createElement('div');
+        d.className = 'kt-cell' + ((r+c)%2===0 ? '' : ' dark');
+        const num = document.createElement('span'); num.className='num'; num.textContent=idx+1;
+        const txt = document.createElement('span');
+        txt.style.cssText = 'font-family:"Tiro Devanagari Sanskrit",serif;font-size:20px';
+        txt.textContent = words[idx];
+        d.appendChild(num); d.appendChild(txt);
+        // For pair board, also show the tour-position number small
+        if (showOnly === 'pair'){
+          // Find at which step this cell is visited in the tour
+          let step = -1;
+          for (let s=0; s<TOUR.length; s++){
+            if (TOUR[s][0]===r && TOUR[s][1]===c){ step = s; break; }
+          }
+          if (step >= 0){
+            const tag = document.createElement('span');
+            tag.style.cssText='position:absolute;bottom:2px;right:5px;font-family:Inter,sans-serif;font-size:9px;color:#7a3a14;opacity:0.7';
+            tag.textContent = '·' + (step+1);
+            d.appendChild(tag);
+          }
+        }
+        el.appendChild(d);
+        cells.push(d);
+      }
+    }
+    return cells;
+  }
+
+  // Static seed-verse board (verse 929 layout)
+  buildBoard('seedBoard', verse929, 'seed');
+  // Pair board: same cells, with tour-position annotations
+  const pairCells = buildBoard('pairBoard', verse929, 'pair');
+
+  // Walk-through controls on the pair board
+  let step = 0, timer = null;
+  function render(){
+    pairCells.forEach(d=>d.classList.remove('current','visited'));
+    for (let s=0; s<step; s++){
+      const [r,c] = TOUR[s];
+      pairCells[r*COLS + c].classList.add('visited');
+    }
+    if (step > 0){
+      const [r,c] = TOUR[step-1];
+      pairCells[r*COLS + c].classList.remove('visited');
+      pairCells[r*COLS + c].classList.add('current');
+    }
+  }
+  function doStep(){
+    if (step >= N) return;
+    step++; render();
+    if (step >= N && timer){ clearInterval(timer); timer=null; document.getElementById('pdkAuto').textContent='Auto-play'; }
+  }
+  function reset(){
+    if (timer){ clearInterval(timer); timer=null; document.getElementById('pdkAuto').textContent='Auto-play'; }
+    step = 0; render();
+  }
+  document.getElementById('pdkStep').addEventListener('click', doStep);
+  document.getElementById('pdkReset').addEventListener('click', reset);
+  document.getElementById('pdkAuto').addEventListener('click', ()=>{
+    const btn = document.getElementById('pdkAuto');
+    if (timer){ clearInterval(timer); timer=null; btn.textContent='Auto-play'; }
+    else { btn.textContent='Pause'; timer = setInterval(doStep, 380); }
+  });
+
+  // Style the kt-btn helper buttons that aren't yet styled in CSS
+  document.querySelectorAll('.kt-btn').forEach(b=>{
+    b.style.cssText += ';font-family:Inter,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:#1f1b16;color:#f7f1e3;border:1px solid #1f1b16;padding:7px 14px;cursor:pointer;border-radius:2px';
+    if (b.classList.contains('alt')) b.style.cssText += ';background:transparent;color:#1f1b16';
+    b.addEventListener('mouseenter', ()=>{ b.style.background='#7a3a14'; b.style.borderColor='#7a3a14'; b.style.color='#f7f1e3'; });
+    b.addEventListener('mouseleave', ()=>{
+      const isAlt = b.classList.contains('alt');
+      b.style.background = isAlt ? 'transparent' : '#1f1b16';
+      b.style.borderColor = '#1f1b16';
+      b.style.color = isAlt ? '#1f1b16' : '#f7f1e3';
+    });
+  });
+})();
+</script>
+</body>
+</html>
